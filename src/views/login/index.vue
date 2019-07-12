@@ -14,7 +14,7 @@
           <el-button style="float:right">发送验证码</el-button>
         </el-form-item>
         <el-form-item>
-          <el-checkbox v-model='checked'>我已阅读并同意用户协议和隐私条款</el-checkbox>
+          <el-checkbox v-model="checked">我已阅读并同意用户协议和隐私条款</el-checkbox>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" style="width:100%" @click="login">登陆</el-button>
@@ -38,8 +38,8 @@ export default {
     return {
       checked: true,
       loginForm: {
-        mobile: '',
-        code: ''
+        mobile: '15237920003',
+        code: '246810'
       },
       loginRules: {
         mobile: [
@@ -58,8 +58,20 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           // 提交登录请求
-          this.axios.post('http://ttapi.research.itcast.cn/mp/v1_0/authorizations', this.loginForm)
+          this.axios
+            .post(
+              'http://ttapi.research.itcast.cn/mp/v1_0/authorizations',
+              this.loginForm
+            )
             .then(res => {
+              // 保存用户信息，来判断登陆状态
+              // sessionStorage BOM对象  全局对象 作用是保存数据
+              // 是有有效期，当你关闭浏览后就失效
+              // sessionStorage.setItem(key,value) 存储数据 value字符串
+              // sessionStorage.getItem(key) 获取数据
+              // sessionStorage.removeItem(key) 删除数据
+              // sessionStorage.clear() 清空所有的数据
+              window.sessionStorage.setItem('toutiao', JSON.stringify(res.data.data))
               this.$router.push('/')
             })
             // 此处err无用可以不写

@@ -4,6 +4,8 @@ import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import router from '@/router'
 import axios from '@/api/axios'
+import components from '@/components'
+Vue.use(components)
 // import axios from 'axios'
 // // 基准路径
 // axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0/'

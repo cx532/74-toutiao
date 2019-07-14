@@ -2,10 +2,7 @@
   <div class="article-container">
     <el-card>
       <div slot="header">
-        <el-breadcrumb separator-class="el-icon-arrow-right">
-          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item>内容管理</el-breadcrumb-item>
-        </el-breadcrumb>
+        <my-bread>内容管理</my-bread>
       </div>
       <el-form :model="reqParams" size="small" label-width="80px">
         <el-form-item label="状态：">

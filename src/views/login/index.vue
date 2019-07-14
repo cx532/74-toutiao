@@ -55,29 +55,36 @@ export default {
   },
   methods: {
     login () {
-      this.$refs.loginForm.validate(valid => {
+      this.$refs.loginForm.validate(async valid => {
         if (valid) {
-          // 提交登录请求
-          this.axios
-            .post(
-              'http://ttapi.research.itcast.cn/mp/v1_0/authorizations',
-              this.loginForm
-            )
-            .then(res => {
-              // 保存用户信息，来判断登陆状态
-              // sessionStorage BOM对象  全局对象 作用是保存数据
-              // 是有有效期，当你关闭浏览后就失效
-              // sessionStorage.setItem(key,value) 存储数据 value字符串
-              // sessionStorage.getItem(key) 获取数据
-              // sessionStorage.removeItem(key) 删除数据
-              // sessionStorage.clear() 清空所有的数据
-              window.sessionStorage.setItem('toutiao', JSON.stringify(res.data.data))
-              this.$router.push('/')
-            })
-            // 此处err无用可以不写
-            .catch(() => {
-              this.$message.error('手机号或验证码错误')
-            })
+        //   // 提交登录请求
+        //   this.axios
+        //     .post(
+        //       'http://ttapi.research.itcast.cn/mp/v1_0/authorizations',
+        //       this.loginForm
+        //     )
+        //     .then(res => {
+        //       // 保存用户信息，来判断登陆状态
+        //       // sessionStorage BOM对象  全局对象 作用是保存数据
+        //       // 是有有效期，当你关闭浏览后就失效
+        //       // sessionStorage.setItem(key,value) 存储数据 value字符串
+        //       // sessionStorage.getItem(key) 获取数据
+        //       // sessionStorage.removeItem(key) 删除数据
+        //       // sessionStorage.clear() 清空所有的数据
+        //       window.sessionStorage.setItem('toutiao', JSON.stringify(res.data.data))
+        //       this.$router.push('/')
+        //     })
+        //     // 此处err无用可以不写
+        //     .catch(() => {
+        //       this.$message.error('手机号或验证码错误')
+        //     })
+          try {
+            const res = await this.axios.post('authorizations', this.loginForm)
+            window.sessionStorage.setItem('toutiao', JSON.stringify(res.data.data))
+            this.$router.push('/')
+          } catch (err) {
+            this.$message.error('手机号或验证码错误')
+          }
         }
       })
     }
@@ -85,7 +92,7 @@ export default {
 }
 </script>
 
-<style lang='less'>
+<style scoped lang='less'>
 .login-container {
   width: 100%;
   height: 100%;

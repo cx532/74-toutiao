@@ -24,7 +24,7 @@ instance.interceptors.response.use(response => response, error => {
   // 做一些事情
   if (error.response.status === 401) {
     // hash 哈希   是url后  #开始的字符串
-    location.hash = '/login'
+    location.hash = '#/login'
   }
   return Promise.reject(error)
 })

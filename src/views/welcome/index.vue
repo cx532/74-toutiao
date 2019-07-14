@@ -6,9 +6,9 @@
 
 <script>
 export default {
-  created () {
-    this.axios.get('articles').then(res => console.log(res.data))
-  }
+  // created () {
+  //   this.axios.get('articles').then(res => console.log(res.data))
+  // }
 }
 </script>
 

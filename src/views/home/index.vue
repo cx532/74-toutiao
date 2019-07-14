@@ -5,7 +5,7 @@
       <el-menu
         router
         style="border-right:none"
-        default-active="/"
+        :default-active="$route.path"
         background-color="#002033"
         text-color="#fff"
         active-text-color="#ffd04b"
@@ -95,6 +95,7 @@ export default {
     // 2. 此时你绑定了一个原生事件给 组件el-dropdown-item
     // 3. 组件解析过后 这个标签是不存在 事件绑定无效
     // 4. 事件修饰符：@click.prevent 阻止浏览器默认行为  @click.native 绑定原生的事件
+    // 此时高亮显示默认在首页，应该是点击谁谁激活样式，此时要设置default-active="/"的值
     setting () {
       this.$router.push('/setting')
     },

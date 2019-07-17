@@ -5,6 +5,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 import router from '@/router'
 import axios from '@/api/axios'
 import components from '@/components'
+// 导入全局样式
+import '@/styles/index.less'
 Vue.use(components)
 // import axios from 'axios'
 // // 基准路径

@@ -2,7 +2,7 @@
   <div class="container" v-loading="loading">
     <el-card>
       <div slot="header">
-        <my-bread>素材管理</my-bread>
+        <my-bread>{{aticleId?'修改':'发布'}}管理</my-bread>
       </div>
       <div style="margin-bottom:20px">
         <el-radio-group size="small" @change="search()" v-model="reqParams.collect">
@@ -109,6 +109,7 @@ export default {
       item.is_collected = data.collect
     },
     handleSuccess (res) {
+      console.log(res)
       // 预览2s，提示上传成功
       this.imageUrl = res.data.url
       this.$message.success('上传成功')

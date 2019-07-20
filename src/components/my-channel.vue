@@ -13,7 +13,6 @@ export default {
       channelOptions: []
     }
   },
-  channelOptions: [],
   created () {
     // 获取频道数据
     this.getChannelOptions()

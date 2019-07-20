@@ -37,3 +37,6 @@
 .image-container .el-dialog__body {
   padding-bottom: 0;
 }
+.setting-container .el-upload {
+  margin-top: 50px;
+}
